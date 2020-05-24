@@ -1,4 +1,21 @@
 server:
   port: 8082
 spring:
-  application: search-zipcode
+  application:
+    name: search-zipcode
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:h2db
+    username: admin
+    password: admin
+    sql-script-encoding: UTF-8
+  jpa:
+    showl-sql: true
+    hibernate:
+      ddl-auto: none
+  jackson:
+    serialization.write-dates-as-timestamps: false
