@@ -1,17 +1,16 @@
 package com.api.searchzipcode.services;
 
 import com.api.searchzipcode.domains.ZipCode;
-import com.api.searchzipcode.repositories.ZipCodeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class ZipCodeService {
 
-    @Autowired
-    private ZipCodeRepository zipCodeRepository;
+public interface ZipCodeService {
 
-    public ZipCode findZipCodeByPostalCode(Integer postalCode){
-        return new ZipCode();
-    }
+    /**
+     *  Method scope to find a ZipCode entity by postalCode value
+     *
+     * @param postalCode Integer value of postal code
+     * @return ZipCode Object
+     * @author João Pedro Martins Souza
+     */
+    public ZipCode findZipCodeByPostalCode(Integer postalCode);
 }
