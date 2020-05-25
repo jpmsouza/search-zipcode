@@ -16,7 +16,7 @@ public class ZipCode {
 
     @Id
     @Column(name = "NUM_POSTAL_CODE")
-    private Integer postalCode;
+    private String postalCode;
 
     @Column(name = "STR_STREET")
     private String street;
@@ -31,5 +31,5 @@ public class ZipCode {
     private String neighborhood;
 
     @Column(name = "STR_IBGECODE")
-    private Integer ibgeCode;
+    private String ibgeCode;
 }

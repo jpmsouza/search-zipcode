@@ -23,6 +23,6 @@ public class ZipCodeController {
 
     @GetMapping("/{postalCode}")
     public ResponseEntity<ZipCode> getZipCodeByPostalCode(@PathVariable  @Pattern(regexp="^\\d{8}$") String postalCode){
-        return new ResponseEntity<>(zipCodeService.findZipCodeByPostalCode(Integer.parseInt(postalCode)), HttpStatus.OK);
+        return new ResponseEntity<>(zipCodeService.findZipCodeByPostalCode(postalCode), HttpStatus.OK);
     }
 }

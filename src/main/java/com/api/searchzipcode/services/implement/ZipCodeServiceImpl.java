@@ -13,7 +13,12 @@ public class ZipCodeServiceImpl implements ZipCodeService {
     private ZipCodeRepository  zipCodeRepository;
 
     @Override
-    public ZipCode findZipCodeByPostalCode(Integer postalCode) {
-        return zipCodeRepository.findByPostalCode(postalCode);
+    public ZipCode findZipCodeByPostalCode(String postalCode) {
+        ZipCode zipCode = zipCodeRepository.findByPostalCode(postalCode);
+        if (zipCode != null || postalCode.equals("00000000")){
+            return zipCode;
+        }else {
+            return this.findZipCodeByPostalCode(postalCode.replaceAll("(?=\\d0*$).","0"));
+        }
     }
 }

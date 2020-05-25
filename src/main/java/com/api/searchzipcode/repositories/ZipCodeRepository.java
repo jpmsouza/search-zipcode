@@ -8,9 +8,9 @@ public interface ZipCodeRepository extends JpaRepository<ZipCode, Integer> {
     /**
      * Find a ZipCode register by postal code value
      *
-     * @param postalCode Integer value of ZipCode
+     * @param postalCode String value of ZipCode
      * @return ZipCode Object
      * @author João Pedro Martins Souza
      */
-    ZipCode findByPostalCode(Integer postalCode);
+    ZipCode findByPostalCode(String postalCode);
 }

@@ -8,9 +8,9 @@ public interface ZipCodeService {
     /**
      *  Method scope to find a ZipCode entity by postalCode value
      *
-     * @param postalCode Integer value of postal code
+     * @param postalCode String value of postal code
      * @return ZipCode Object
      * @author João Pedro Martins Souza
      */
-    public ZipCode findZipCodeByPostalCode(Integer postalCode);
+    public ZipCode findZipCodeByPostalCode(String postalCode);
 }
