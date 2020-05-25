@@ -1,4 +1,16 @@
 package com.api.searchzipcode.repositories;
 
-public interface ZipCodeRepository {
+import com.api.searchzipcode.domains.ZipCode;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ZipCodeRepository extends JpaRepository<ZipCode, Integer> {
+
+    /**
+     * Find a ZipCode register by postal code value
+     *
+     * @param postalCode Integer value of ZipCode
+     * @return ZipCode Object
+     * @author João Pedro Martins Souza
+     */
+    ZipCode findByPostalCode(Integer postalCode);
 }
