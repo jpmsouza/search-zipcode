@@ -1,6 +1,5 @@
 package com.api.searchzipcode.utils;
 
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
