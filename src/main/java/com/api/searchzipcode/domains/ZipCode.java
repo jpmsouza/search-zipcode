@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
@@ -16,6 +17,7 @@ public class ZipCode {
 
     @Id
     @Column(name = "NUM_POSTAL_CODE")
+    @Pattern(regexp="^\\d{8}$")
     private String postalCode;
 
     @Column(name = "STR_STREET")
