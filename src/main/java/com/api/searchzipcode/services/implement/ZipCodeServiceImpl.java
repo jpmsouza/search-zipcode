@@ -15,6 +15,14 @@ public class ZipCodeServiceImpl implements ZipCodeService {
 
     private final String POSTAL_CODE_ZEROS =  "00000000";
 
+    /**
+     *  Implementation for findZipCodeByPostalCode interface method
+     *  Find a ZipCode entity by postalCode value
+     *
+     * @param postalCode String value of postal code
+     * @return ZipCode Object
+     * @author João Pedro Martins Souza
+     */
     @Override
     public ZipCode findZipCodeByPostalCode(String postalCode) {
         ZipCode zipCode = zipCodeRepository.findByPostalCode(postalCode);

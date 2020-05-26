@@ -14,6 +14,13 @@ public class ExceptionHanlderAdvice extends ResponseEntityExceptionHandler {
     private final String WRONG_FORMAT = "Invalid query parameter constraint!";
     private final String DATA_NOT_FOUND = "No zip code found!";
 
+    /**
+     * Handler method for ConstraintViolationException
+     *
+     * @param ex ConstraintViolationException object
+     * @return ResponseEntity object with a timestamp, error, message and http status code
+     * @author João Pedro Martins Souza
+     */
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex){
         return new ResponseEntity<>(Utils.builderBodyResponse(
@@ -23,6 +30,13 @@ public class ExceptionHanlderAdvice extends ResponseEntityExceptionHandler {
         ), HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * Handler method for ResourceNotFoundException
+     *
+     * @param ex ResourceNotFoundException object
+     * @return ResponseEntity object with a timestamp, error, message and http status code
+     * @author João Pedro Martins Souza
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> handleResourceNotFound(ResourceNotFoundException ex){
         return new ResponseEntity<>(Utils.builderBodyResponse(

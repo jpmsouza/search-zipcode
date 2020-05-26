@@ -22,6 +22,13 @@ public class ZipCodeController {
     @Autowired
     private ZipCodeService zipCodeService;
 
+    /**
+     * Get a zip code entity by postal code value
+     *
+     * @param postalCode String value of postal code
+     * @return ResponseEntity Object with respective Http status code and body
+     * @author João Pedro Martins Souza
+     */
     @GetMapping("/{postalCode}")
     public ResponseEntity<ZipCode> getZipCodeByPostalCode(@PathVariable  @Pattern(regexp="^\\d{8}$") String postalCode){
         ZipCode zipCode = zipCodeService.findZipCodeByPostalCode(postalCode);
