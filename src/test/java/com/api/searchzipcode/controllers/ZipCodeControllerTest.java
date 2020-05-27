@@ -80,7 +80,7 @@ public class ZipCodeControllerTest {
         Mockito.when(zipCodeService.findZipCodeByPostalCode(Mockito.anyString())).thenThrow(new NullPointerException());
         mockMvc.perform(get("/zip-code/{postalCode}",TestConditionsValue.VALID_CODE)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isInternalServerError())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("message",is(ResponseMessage.INTERNAL_ERROR)));
     }

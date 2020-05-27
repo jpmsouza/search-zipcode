@@ -55,9 +55,9 @@ public class ExceptionHanlderAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleAll(Exception ex){
         return new ResponseEntity<>(Utils.builderBodyResponse(
-                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 ex.getMessage(),
                 ResponseMessage.INTERNAL_ERROR
-        ), HttpStatus.BAD_REQUEST);
+        ), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
