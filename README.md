@@ -29,6 +29,10 @@ As already mentioned, for this project it was used the H2 in-memory database for
 * The database schema/sctruct was implemented in a file named schema.sql (src/main/resources/schema.sql)
 * the database initial data insert was implemeted in a file named data.sql (src/main/resources/data.sql)
 
+## Design Code
+
+To improve code strucuture, it was used the design pattern Abstract Factory at service layer to provide the abstraction of the code implemantion at this layer and through it facilitate the maintainability or exchange of this part of the code without impact the rest of code.
+
 ## Coding style tests
 
 The tests was written using the framework support in Spring Boot and was implemented only unit tests to cover the code in an isolation form.
