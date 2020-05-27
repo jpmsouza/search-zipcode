@@ -1,0 +1,9 @@
+com.api.searchzipcode.config
+com.api.searchzipcode.controllers
+com.api.searchzipcode.domains
+com.api.searchzipcode.repositories
+com.api.searchzipcode.services
+com.api.searchzipcode.services.implement
+com.api.searchzipcode.spring
+com.api.searchzipcode.utils
+com.api.searchzipcode.utils.constants
