@@ -47,4 +47,4 @@ Add additional notes about how to deploy this on a live system:
 
 ## Additional documentation
 * Swagger: http://localhost:8082/swagger-ui.html
-* JavaDoc: 
+* JavaDoc: /doc/index.html (Ex: C:/search-zipcode/doc/index.html)
