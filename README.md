@@ -23,9 +23,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 As already mentioned, for this project it was used the H2 in-memory database for test purposes. In the follwing tops are some addtional informat related to the  database access, struct and data.
 * It was setup in application.yml the path, user and password for access the H2 database.
-** path: http://localhost:8082/h2-console
-** username: admin
-** password: admin
+  - path: http://localhost:8082/h2-console
+  - username: admin
+  - password: admin
 * The database schema/sctruct was implemented in a file named schema.sql (src/main/resources/schema.sql)
 * the database initial data insert was implemeted in a file named data.sql (src/main/resources/data.sql)
 
