@@ -44,4 +44,20 @@ public class ExceptionHanlderAdvice extends ResponseEntityExceptionHandler {
                 ResponseMessage.DATA_NOT_FOUND
         ), HttpStatus.NOT_FOUND);
     }
+
+    /**
+     * Default method to Handler an no mapped Exception
+     *
+     * @param ex Exception object
+     * @return ResponseEntity object with a timestamp, error, message and http status code
+     * @author João Pedro Martins Souza
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleAll(Exception ex){
+        return new ResponseEntity<>(Utils.builderBodyResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                ResponseMessage.INTERNAL_ERROR
+        ), HttpStatus.BAD_REQUEST);
+    }
 }

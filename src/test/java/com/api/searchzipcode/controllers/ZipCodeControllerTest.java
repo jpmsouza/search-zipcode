@@ -74,4 +74,14 @@ public class ZipCodeControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("message",is(ResponseMessage.WRONG_FORMAT)));
     }
+
+    @Test
+    public void givenUnhandledPostalCode_whenGetZipCode_thenReturnBadRequest() throws Exception{
+        Mockito.when(zipCodeService.findZipCodeByPostalCode(Mockito.anyString())).thenThrow(new NullPointerException());
+        mockMvc.perform(get("/zip-code/{postalCode}",TestConditionsValue.VALID_CODE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("message",is(ResponseMessage.INTERNAL_ERROR)));
+    }
 }
