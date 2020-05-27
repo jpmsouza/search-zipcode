@@ -1,6 +1,8 @@
 package com.api.searchzipcode.utils;
 
 import javax.validation.ConstraintViolationException;
+
+import com.api.searchzipcode.utils.constants.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,9 +12,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class ExceptionHanlderAdvice extends ResponseEntityExceptionHandler {
-
-    private final String WRONG_FORMAT = "Invalid query parameter constraint!";
-    private final String DATA_NOT_FOUND = "No zip code found!";
 
     /**
      * Handler method for ConstraintViolationException
@@ -26,7 +25,7 @@ public class ExceptionHanlderAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(Utils.builderBodyResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
-                WRONG_FORMAT
+                ResponseMessage.WRONG_FORMAT
         ), HttpStatus.BAD_REQUEST);
     }
 
@@ -42,7 +41,7 @@ public class ExceptionHanlderAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(Utils.builderBodyResponse(
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
-                DATA_NOT_FOUND
+                ResponseMessage.DATA_NOT_FOUND
         ), HttpStatus.NOT_FOUND);
     }
 }

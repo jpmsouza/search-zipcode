@@ -2,6 +2,7 @@ package com.api.searchzipcode.repositories;
 
 import com.api.searchzipcode.domains.ZipCode;
 import com.api.searchzipcode.spring.SearchZipcodeApplication;
+import com.api.searchzipcode.utils.constants.TestConditionsValue;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,12 +25,12 @@ public class ZipCodeRepositoryTest {
 
     @Test
     public void whenFindByPostalCode_thenReturnZipCode(){
-        String postalCode = "12345678";
+        String postalCode = TestConditionsValue.VALID_CODE;
         ZipCode zipCode = new ZipCode();
-        zipCode.setPostalCode("12345678");
-        zipCode.setCity("São José");
-        zipCode.setState("SP");
-        zipCode.setIbgeCode("12345678");
+        zipCode.setPostalCode(TestConditionsValue.VALID_CODE);
+        zipCode.setCity(TestConditionsValue.CITY);
+        zipCode.setState(TestConditionsValue.STATE);
+        zipCode.setIbgeCode(TestConditionsValue.VALID_CODE);
         testEntityManager.persist(zipCode);
         testEntityManager.flush();
 

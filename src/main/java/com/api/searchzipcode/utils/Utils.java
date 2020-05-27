@@ -1,12 +1,12 @@
 package com.api.searchzipcode.utils;
 
 
+import com.api.searchzipcode.utils.constants.RegularExpressions;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
 public final class Utils {
-
-    private static final String REGEX = "(?=\\d0*$).";
 
     private Utils(){
         throw new UnsupportedOperationException();
@@ -20,7 +20,7 @@ public final class Utils {
      * @author João Pedro Martins Souza
      */
     public static String replaceWithZeros(String value){
-        return value.replaceAll(REGEX,"0");
+        return value.replaceAll(RegularExpressions.DIGIT_FOLLOWED_BY_ZERO,"0");
     }
 
     /**

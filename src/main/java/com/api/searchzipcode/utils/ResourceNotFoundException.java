@@ -1,8 +1,8 @@
 package com.api.searchzipcode.utils;
 
-public class ResourceNotFoundException extends RuntimeException {
+import com.api.searchzipcode.utils.constants.ResponseMessage;
 
-    private final static String NO_DATA_FOUND = "No data found!";
+public class ResourceNotFoundException extends RuntimeException {
 
     /**
      * Constructs a new runtime exception with the specified detail message.
@@ -10,6 +10,6 @@ public class ResourceNotFoundException extends RuntimeException {
      * call to {@link #initCause}.
      */
     public ResourceNotFoundException() {
-        super(NO_DATA_FOUND);
+        super(ResponseMessage.NO_DATA_FOUND);
     }
 }

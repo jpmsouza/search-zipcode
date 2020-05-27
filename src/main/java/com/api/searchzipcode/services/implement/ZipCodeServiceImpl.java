@@ -4,6 +4,7 @@ import com.api.searchzipcode.domains.ZipCode;
 import com.api.searchzipcode.repositories.ZipCodeRepository;
 import com.api.searchzipcode.services.ZipCodeService;
 import com.api.searchzipcode.utils.Utils;
+import com.api.searchzipcode.utils.constants.TestConditionsValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,6 @@ public class ZipCodeServiceImpl implements ZipCodeService {
 
     @Autowired
     private ZipCodeRepository  zipCodeRepository;
-
-    private final String POSTAL_CODE_ZEROS =  "00000000";
 
     /**
      *  Implementation for findZipCodeByPostalCode interface method
@@ -26,7 +25,7 @@ public class ZipCodeServiceImpl implements ZipCodeService {
     @Override
     public ZipCode findZipCodeByPostalCode(String postalCode) {
         ZipCode zipCode = zipCodeRepository.findByPostalCode(postalCode);
-        if (zipCode != null || postalCode.equals(POSTAL_CODE_ZEROS)){
+        if (zipCode != null || postalCode.equals(TestConditionsValue.STOP_AT_ZEROS)){
             return zipCode;
         }else {
             return this.findZipCodeByPostalCode(Utils.replaceWithZeros(postalCode));

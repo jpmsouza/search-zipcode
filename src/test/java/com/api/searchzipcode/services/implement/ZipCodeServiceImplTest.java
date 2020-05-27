@@ -3,6 +3,7 @@ package com.api.searchzipcode.services.implement;
 import com.api.searchzipcode.domains.ZipCode;
 import com.api.searchzipcode.repositories.ZipCodeRepository;
 import com.api.searchzipcode.services.ZipCodeService;
+import com.api.searchzipcode.utils.constants.TestConditionsValue;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,35 +32,31 @@ public class ZipCodeServiceImplTest {
     @MockBean
     private ZipCodeRepository zipCodeRepository;
 
-    private final String CODE = "12345670";
-    private final String INVALID_CODE = "12345668";
-    private final String WRONG_DIGIT_CODE = "12345678";
-
     @Before
     public void setup(){
         ZipCode zipCode = new ZipCode();
-        zipCode.setPostalCode(CODE);
-        zipCode.setState("MG");
-        zipCode.setCity("São José");
-        zipCode.setIbgeCode(CODE);
+        zipCode.setPostalCode(TestConditionsValue.VALID_CODE);
+        zipCode.setState(TestConditionsValue.STATE);
+        zipCode.setCity(TestConditionsValue.CITY);
+        zipCode.setIbgeCode(TestConditionsValue.VALID_CODE);
 
         Mockito.when(zipCodeRepository.findByPostalCode(zipCode.getPostalCode())).thenReturn(zipCode);
     }
 
     @Test
     public void whenValidPostalCode_thenZipCodeShouldBeFound(){
-        Assert.assertEquals(CODE,
-                zipCodeService.findZipCodeByPostalCode(CODE).getPostalCode());
+        Assert.assertEquals(TestConditionsValue.VALID_CODE,
+                zipCodeService.findZipCodeByPostalCode(TestConditionsValue.VALID_CODE).getPostalCode());
     }
 
     @Test
     public void whenNotValidPostalCode_thenZipCodeShouldNotBeFound(){
-        Assert.assertNull(zipCodeService.findZipCodeByPostalCode(INVALID_CODE));
+        Assert.assertNull(zipCodeService.findZipCodeByPostalCode(TestConditionsValue.NO_EXIST_CODE));
     }
 
     @Test
     public void whenValidPostalCodeWithWrongDigit_thenZipCodeShouldBeFound(){
-        Assert.assertEquals(CODE,
-                zipCodeService.findZipCodeByPostalCode(WRONG_DIGIT_CODE).getPostalCode());
+        Assert.assertEquals(TestConditionsValue.VALID_CODE,
+                zipCodeService.findZipCodeByPostalCode(TestConditionsValue.WRONG_DIGIT_CODE).getPostalCode());
     }
 }

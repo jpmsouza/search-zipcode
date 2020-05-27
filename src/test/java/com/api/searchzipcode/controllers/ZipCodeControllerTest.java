@@ -4,6 +4,8 @@ import com.api.searchzipcode.domains.ZipCode;
 import com.api.searchzipcode.services.ZipCodeService;
 import com.api.searchzipcode.services.implement.ZipCodeServiceImpl;
 import com.api.searchzipcode.utils.ExceptionHanlderAdvice;
+import com.api.searchzipcode.utils.constants.ResponseMessage;
+import com.api.searchzipcode.utils.constants.TestConditionsValue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -39,37 +41,37 @@ public class ZipCodeControllerTest {
     @Test
     public void givenPostalCode_whenGetZipCode_thenReturnJson() throws Exception{
         ZipCode zipCode = new ZipCode();
-        zipCode.setPostalCode("12345678");
-        zipCode.setCity("São José");
-        zipCode.setState("SP");
-        zipCode.setIbgeCode("12345678");
+        zipCode.setPostalCode(TestConditionsValue.VALID_CODE);
+        zipCode.setCity(TestConditionsValue.CITY);
+        zipCode.setState(TestConditionsValue.STATE);
+        zipCode.setIbgeCode(TestConditionsValue.VALID_CODE);
 
         Mockito.when(zipCodeService.findZipCodeByPostalCode(Mockito.anyString())).thenReturn(zipCode);
 
-        mockMvc.perform(get("/zip-code/{postalCode}","12345678")
+        mockMvc.perform(get("/zip-code/{postalCode}",TestConditionsValue.VALID_CODE)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("postalCode",is("12345678")));
+                .andExpect(jsonPath("postalCode",is(TestConditionsValue.VALID_CODE)));
     }
 
     @Test
     public void givenNoExistPostalCode_whenGetZipCode_thenReturnNotFound() throws Exception{
         Mockito.when(zipCodeService.findZipCodeByPostalCode(Mockito.anyString())).thenReturn(null);
 
-        mockMvc.perform(get("/zip-code/{postalCode}","12345678")
+        mockMvc.perform(get("/zip-code/{postalCode}",TestConditionsValue.NO_EXIST_CODE)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("message",is("No zip code found!")));
+                .andExpect(jsonPath("message",is(ResponseMessage.DATA_NOT_FOUND)));
     }
 
     @Test
     public void givenInvalidPostalCode_whenGetZipCode_thenReturnBadRequest() throws Exception{
-        mockMvc.perform(get("/zip-code/{postalCode}","1234567")
+        mockMvc.perform(get("/zip-code/{postalCode}",TestConditionsValue.INVALID_CODE)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("message",is("Invalid query parameter constraint!")));
+                .andExpect(jsonPath("message",is(ResponseMessage.WRONG_FORMAT)));
     }
 }

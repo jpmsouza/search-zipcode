@@ -1,5 +1,6 @@
 package com.api.searchzipcode.domains;
 
+import com.api.searchzipcode.utils.constants.RegularExpressions;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class ZipCode {
 
     @Id
     @Column(name = "NUM_POSTAL_CODE")
-    @Pattern(regexp="^\\d{8}$")
+    @Pattern(regexp= RegularExpressions.VALID_ZIP_CODE)
     private String postalCode;
 
     @Column(name = "STR_STREET")

@@ -2,6 +2,7 @@ package com.api.searchzipcode.controllers;
 
 import com.api.searchzipcode.domains.ZipCode;
 import com.api.searchzipcode.services.ZipCodeService;
+import com.api.searchzipcode.utils.constants.RegularExpressions;
 import com.api.searchzipcode.utils.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class ZipCodeController {
      * @author João Pedro Martins Souza
      */
     @GetMapping("/{postalCode}")
-    public ResponseEntity<ZipCode> getZipCodeByPostalCode(@PathVariable  @Pattern(regexp="^\\d{8}$") String postalCode){
+    public ResponseEntity<ZipCode> getZipCodeByPostalCode(@PathVariable  @Pattern(regexp= RegularExpressions.VALID_ZIP_CODE) String postalCode){
         ZipCode zipCode = zipCodeService.findZipCodeByPostalCode(postalCode);
         if (zipCode==null){
             throw new ResourceNotFoundException();
